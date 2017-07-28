@@ -12,10 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "next": "^3.0.1-beta.20",
+    "nprogress": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "redux-devtools-extension": "^2.13.2",
     "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2"
   }
 }

@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default () => (
 	<ul>
-		<Item href="/newest">new</Item>
+		<Item href="/about">about</Item>
 
 		<style jsx>{`
       ul {

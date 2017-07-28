@@ -1,21 +1,12 @@
+import React from 'react'
+import Page from '../components/page'
 
-export default () => (
-	<div>
-		About
-		<style jsx>{`
-      p {
-        color: blue;
-      }
-      div {
-        background: red;
-      }
-      @media (max-width: 600px) {
-        div {
-          background: red;
-        }
-      }
-    `}</style>
-	</div>
+export default class extends React.Component {
 
+	render () {
+		return <Page>
+			This is the about page
+		</Page>
+	}
 
-)
+}

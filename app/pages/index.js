@@ -8,8 +8,6 @@ export default class extends React.Component {
 	// }
 
 	render () {
-		const { page, url, stories } = this.props
-		const offset = (page - 1) * 30
 		return <Page></Page>
 	}
 
