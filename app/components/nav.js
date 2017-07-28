@@ -3,6 +3,7 @@ import Link from 'next/link'
 export default () => (
 	<ul>
 		<Item href="/about">about</Item>
+		<Item href="/submit">submit technique</Item>
 
 		<style jsx>{`
       ul {

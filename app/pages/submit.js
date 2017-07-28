@@ -5,7 +5,7 @@ export default class extends React.Component {
 
 	render () {
 		return <Page>
-			This is the about page!
+			This is the submit page!
 		</Page>
 	}
 
