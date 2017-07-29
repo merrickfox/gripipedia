@@ -1,24 +1,23 @@
+import * as actions from '../actions/position'
+
 export const initialState = {
 	position: null,
 	elevation: null,
-	technique_type: null
-}
-
-export const actionTypes = {
-	SET_POSITION: 'SET_POSITION',
-	SET_ELEVATION: 'SET_ELEVATION',
-	SET_TECHNIQUE_TYPE: 'SET_TECHNIQUE_TYPE'
+	technique_type: null,
+	stage: 1
 }
 
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.SET_POSITION:
+		case actions.SET_POSITION:
 			return Object.assign({}, state, { position: action.position })
-		case actionTypes.SET_ELEVATION:
+		case actions.SET_ELEVATION:
 			return Object.assign({}, state, { elevation: action.elevation })
-		case actionTypes.SET_TECHNIQUE_TYPE:
+		case actions.SET_TECHNIQUE_TYPE:
 			return Object.assign({}, state, { technique_type: action.technique_type })
+		case actions.SET_POSITION_STAGE:
+			return Object.assign({}, state, { stage: action.stage })
 		default: return state
 	}
 }

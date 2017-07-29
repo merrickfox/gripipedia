@@ -15,9 +15,17 @@ export function setElevation(elevation) {
 }
 
 export const SET_TECHNIQUE_TYPE = "SET_TECHNIQUE_TYPE";
-export function setTechniqieType(techniqueType) {
+export function setTechniqueType(technique_type) {
 	return {
 		type: SET_TECHNIQUE_TYPE,
-		techniqueType
+		technique_type
+	};
+}
+
+export const SET_POSITION_STAGE = "SET_POSITION_STAGE";
+export function setPositionStage(stage) {
+	return {
+		type: SET_POSITION_STAGE,
+		stage
 	};
 }
