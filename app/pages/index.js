@@ -1,15 +1,16 @@
 import React from 'react'
 import Page from '../components/page'
+import VideoGrid from '../components/video-grid'
+
+
 
 export default class extends React.Component {
-
-	static async getInitialProps ({ query }) {
-		console.log(query)
-		return {}
-	}
-
 	render () {
-		return <Page></Page>
+		return(
+			<Page>
+				<VideoGrid/>
+			</Page>
+		)
 	}
 
 }
