@@ -1,5 +1,7 @@
 import { autobind } from 'core-decorators';
 import { techniqueMap } from '../config/technique-map';
+import { fetchVideoFromId } from '../api/youtube-api';
+
 
 class TechniqueForm extends React.Component {
 
@@ -8,9 +10,11 @@ class TechniqueForm extends React.Component {
 		this.state = {
 			youtube_value: '',
 			youtube_id: '',
+			youtube_data: '',
 			position: '',
 			dominance: '',
 			technique_type: '',
+
 		};
 	}
 
@@ -22,10 +26,22 @@ class TechniqueForm extends React.Component {
   }
 
 	@autobind
-	handleYoutubeUrlChange(event) {
-		const value = event.target.value
-		this.setState({value});
-		console.log(this.youtubeIdParser(value))
+	async handleYoutubeUrlChange(event) {
+		const value = event.target.value;
+		const id = this.youtubeIdParser(value);
+
+		if (id) {
+			const apiData = await fetchVideoFromId(id);
+			console.log(apiData)
+			if (apiData.items.length && apiData.items[0].snippet) {
+				this.setState({
+					youtube_value: value,
+					youtube_id: id,
+					youtube_data: apiData.items[0].snippet
+				});
+			}
+		}
+
 	}
 
 	@autobind
@@ -35,7 +51,7 @@ class TechniqueForm extends React.Component {
 
 	@autobind
 	handleSubmit(event) {
-		alert('A name was submitted: ' + this.state.value);
+		swal('Hello world!')
 		event.preventDefault();
 	}
 
@@ -100,10 +116,17 @@ class TechniqueForm extends React.Component {
 				</label>
 
 				<label>
-					Youtube URL:
+					Youtube URL (eg: https://www.youtube.com/watch?v=2kvM6ACOxHw):
 					<input type="text" value={this.state.value} onChange={this.handleYoutubeUrlChange} />
 				</label>
+				{this.state.youtube_data &&
+				<div className="submission-preview">
+					<h3>{this.state.youtube_data.title}</h3>
+					<img src={this.state.youtube_data.thumbnails.default.url} alt=""/>
+				</div>
+				}
 				<input type="submit" value="Submit" />
+
 
 				{ /*language=SCSS*/ }
 				<style jsx>{`
