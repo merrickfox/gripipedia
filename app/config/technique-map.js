@@ -1,5 +1,5 @@
 export const techniqueMap = {
-	positions: [
+	position: [
 		{
 			name: 'Guard',
 			option: 'GUARD'
@@ -21,6 +21,7 @@ export const techniqueMap = {
 			option: 'BACK'
 		},
 	],
+	position_question: 'Where are you having trouble?',
 	dominance: [
 		{
 			name: 'Top/Dominant',
@@ -31,14 +32,16 @@ export const techniqueMap = {
 			option: 'BOTTOM'
 		},
 	],
+	dominance_question: 'While you\'re on the...',
 	technique_type: [
 		{
-			name: 'Submission',
+			name: 'Submissions',
 			option: 'SUBMISSION'
 		},
 		{
-			name: 'Sweep',
+			name: 'Sweeps',
 			option: 'SWEEP'
 		},
-	]
+	],
+	technique_type_question: 'Show me ..',
 }

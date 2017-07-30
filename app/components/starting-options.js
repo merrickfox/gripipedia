@@ -26,15 +26,21 @@ class StartingOptions extends React.Component {
 			setTechniqueType
 		} = this.props;
 
-		if (stage === 1) {
+		const ordering = {
+			1: {name: 'position', dispacher_callback: setPosition},
+			2: {name: 'dominance', dispacher_callback: setDominance},
+			3: {name: 'technique_type', dispacher_callback: setTechniqueType}
+		};
+
+		if (stage <= 3) {
 			return(
 				<div className="option-set">
-					<h2>Where are you having trouble?</h2>
+					<h2>{techniqueMap[`${ordering[stage].name}_question`]}</h2>
 					<div className="buttons">
-						{techniqueMap.positions.map(item => (
+						{techniqueMap[ordering[stage].name].map(item => (
 							<button
 								className="btn-primary"
-								onClick={() => {this.selectOption(item.option, setPosition)}}
+								onClick={() => {this.selectOption(item.option, ordering[stage].dispacher_callback)}}
 								type="button"
 								key={item.option}
 							>
@@ -42,57 +48,19 @@ class StartingOptions extends React.Component {
 							</button>
 						))}
 					</div>
-				</div>
-			)
-		} else if (stage === 2) {
-			return (
-				<div className="option-set">
-					<h2>While you're on the...</h2>
-					<div className="buttons">
-						{techniqueMap.dominance.map(item => (
-							<button
-								className="btn-primary"
-								onClick={() => {this.selectOption(item.option, setDominance)}}
-								type="button"
-								key={item.option}
-							>
-								{item.name}
-							</button>
-						))}
-					</div>
+					{stage > 1 &&
 					<div>
-						<button className="btn-warn" onClick={() => {this.goBack()}}>
+						<button className="btn-warn" onClick={() => {
+							this.goBack()
+						}}>
 							Back
 						</button>
 					</div>
+					}
 				</div>
 			)
-		} else if (stage === 3) {
-			return (
-				<div className="option-set">
-					<h2>Show me ..</h2>
-					<div className="buttons">
-						{techniqueMap.technique_type.map(item => (
-							<button
-								className="btn-primary"
-								onClick={() => {this.selectOption(item.option, setTechniqueType)}}
-								type="button"
-								key={item.option}
-							>
-								{item.name}
-							</button>
-						))}
-					</div>
-					<div>
-						<button className="btn-warn" onClick={() => {this.goBack()}}>
-							Back
-						</button>
-					</div>
-				</div>
-			)
-		} else {
-			return null;
 		}
+
 
 	}
 
