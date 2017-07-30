@@ -13,7 +13,7 @@ export const techniqueMap = {
 			option: 'SIDE_MOUNT'
 		},
 		{
-			name: 'MOUNT',
+			name: 'Mount',
 			option: 'MOUNT'
 		},
 		{
