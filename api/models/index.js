@@ -1,5 +1,6 @@
 import Sequelize from "sequelize";
 import user from './user';
+import techniques from './technique';
 
 const sequelize = new Sequelize('gripipedia_gql', 'merrick', 'gripipedia', {
 	host: 'localhost',
@@ -7,7 +8,8 @@ const sequelize = new Sequelize('gripipedia_gql', 'merrick', 'gripipedia', {
 });
 
 const db = {
-	User: sequelize.import('./user')
+	User: sequelize.import('./user'),
+	Technique: sequelize.import('./technique'),
 };
 
 // Object.keys(db).forEach(function(modelName) {

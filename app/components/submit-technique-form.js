@@ -51,7 +51,7 @@ class TechniqueForm extends React.Component {
 
 	@autobind
 	handleSubmit(event) {
-		swal('Hello world!')
+
 		event.preventDefault();
 	}
 
