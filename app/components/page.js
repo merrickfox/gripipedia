@@ -16,7 +16,7 @@ export default ({ children }) => (
 			<div className="page">
 				{ children }
 			</div>
-
+			{ /*language=SCSS*/ }
 			<style jsx>{`
 				.main {
 					width: 85%;

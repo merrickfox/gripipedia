@@ -18,7 +18,7 @@ export default () => (
 		<div className="right">
 			<Link prefetch href="/login"><a className="login">login</a></Link>
 		</div>
-
+		{ /*language=SCSS*/ }
 		<style jsx>{`
       header {
         background: #57a5bf;

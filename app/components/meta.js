@@ -13,6 +13,7 @@ export default () => (
 			<meta charSet="utf-8" />
 			<link rel="shortcut icon" href="/static/favicon.ico" />
 		</Head>
+		{ /*language=SCSS*/ }
 		<style jsx global>{`
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

@@ -6,11 +6,11 @@ export function setPosition(position) {
 	};
 }
 
-export const SET_ELEVATION = "SET_ELEVATION";
-export function setElevation(elevation) {
+export const SET_DOMINANCE = "SET_DOMINANCE";
+export function setDominance(dominance) {
 	return {
-		type: SET_ELEVATION,
-		elevation
+		type: SET_DOMINANCE,
+		dominance
 	};
 }
 

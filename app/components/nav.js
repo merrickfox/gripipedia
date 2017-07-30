@@ -18,7 +18,7 @@ const Item = ({ href, children }) => (
 		<Link prefetch href={href}>
 			<a>{ children }</a>
 		</Link>
-
+		{ /*language=SCSS*/ }
 		<style jsx>{`
       li {
         display: inline-block;
