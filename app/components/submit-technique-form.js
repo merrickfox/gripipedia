@@ -147,6 +147,14 @@ class TechniqueForm extends React.Component {
       			justify-content: center;
       		}
 
+					label {
+            margin: 14px;
+					}
+
+					select, input{
+						margin: 0 16px;
+					}
+
     		`}</style>
 			</form>
 		);
