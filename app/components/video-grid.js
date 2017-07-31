@@ -1,12 +1,27 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo'
-import Router from 'next/router'
+import SingleVideo from './video'
+import {fetchVideoFromId} from '../api/youtube-api'
 
 class VideoGrid extends React.Component {
 
-	componentDidMount () {
-		console.log('props', this.props.data)
+	constructor(props) {
+		super(props);
+		this.state = {
+			youtube_data: null
+		};
+	}
+
+	async componentWillReceiveProps(nextProps) {
+		if (!nextProps.data.loading && nextProps.data.getTechniques) {
+			const ids = nextProps.data.getTechniques.map((obj) => obj.youtube_id);
+
+			const data = await fetchVideoFromId(ids);
+			this.setState({
+				youtube_data: data.items
+			});
+		}
 	}
 
 	render () {
@@ -22,9 +37,10 @@ class VideoGrid extends React.Component {
 				}
 
 				{getTechniques &&
-				<div>
-
-				</div>
+				this.state.youtube_data &&
+				this.state.youtube_data.map(item => (
+					<SingleVideo key={item.id} {...item} />
+				))
 				}
 
 			</div>
