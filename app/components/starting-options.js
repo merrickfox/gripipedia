@@ -96,6 +96,7 @@ class StartingOptions extends React.Component {
       		.button-options {
       			display: flex;
       			justify-content: center;
+						min-height: 900px;
       		}
 
           .button-options :global(> .option-set .buttons) {
@@ -109,7 +110,6 @@ class StartingOptions extends React.Component {
 
           .button-options :global(> .option-set) {
             display: flex;
-            justify-content: center;
             flex-direction: column;
 						text-align: center;
           }
