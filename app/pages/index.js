@@ -1,6 +1,7 @@
 import React from 'react'
 import Page from '../components/page'
 import StartingOptions from '../components/starting-options'
+import VideoGrid from '../components/video-grid'
 import { initStore } from '../store'
 import withRedux from 'next-redux-wrapper'
 

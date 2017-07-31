@@ -1,6 +1,7 @@
 import { autobind } from 'core-decorators';
 import { techniqueMap } from '../config/technique-map';
 import { fetchVideoFromId } from '../api/youtube-api';
+import { gql, graphql } from 'react-apollo';
 
 
 class TechniqueForm extends React.Component {
@@ -11,9 +12,9 @@ class TechniqueForm extends React.Component {
 			youtube_value: '',
 			youtube_id: '',
 			youtube_data: '',
-			position: '',
-			dominance: '',
-			technique_type: '',
+			position: 'GUARD',
+			dominance: 'TOP',
+			technique_type: 'SUBMISSION',
 
 		};
 	}
@@ -32,7 +33,6 @@ class TechniqueForm extends React.Component {
 
 		if (id) {
 			const apiData = await fetchVideoFromId(id);
-			console.log(apiData)
 			if (apiData.items.length && apiData.items[0].snippet) {
 				this.setState({
 					youtube_value: value,
@@ -51,7 +51,17 @@ class TechniqueForm extends React.Component {
 
 	@autobind
 	handleSubmit(event) {
-
+		if (this.state.youtube_id) {
+			this.props.mutate({
+				variables: {
+					youtube_id: this.state.youtube_id,
+					title: this.state.youtube_data.title,
+					position: this.state.position,
+					dominance: this.state.dominance,
+					technique_type: this.state.technique_type,
+				}
+			})
+		}
 		event.preventDefault();
 	}
 
@@ -144,4 +154,12 @@ class TechniqueForm extends React.Component {
 
 }
 
-export default TechniqueForm;
+const submitTechnique = gql`
+  mutation createTechnique($youtube_id: String!, $title: String!, $position: String!, $dominance: String!, $technique_type: String!) {
+    createTechnique(youtube_id: $youtube_id, title: $title, position: $position, dominance: $dominance, technique_type: $technique_type) {
+      youtube_id
+    }
+  }
+`;
+
+export default graphql(submitTechnique)(TechniqueForm);

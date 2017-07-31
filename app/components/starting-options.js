@@ -3,13 +3,34 @@ import { connect } from 'react-redux'
 import { setPosition, setDominance, setTechniqueType , setPositionStage} from '../actions/position'
 import { autobind } from 'core-decorators';
 import { techniqueMap } from '../config/technique-map';
+import Router from 'next/router'
 
 class StartingOptions extends React.Component {
 
 	@autobind
 	selectOption (option, setter) {
 		setter(option);
-		this.props.setPositionStage(this.props.stage + 1);
+
+		if (this.props.stage === 3) {
+			this.props.setPositionStage(1)
+			this.navigateToTechniques();
+		} else {
+			this.props.setPositionStage(this.props.stage + 1);
+		}
+	}
+
+	@autobind
+	navigateToTechniques () {
+		const { position, dominance, technique_type } = this.props;
+		console.log(technique_type, this.props)
+		Router.push({
+			pathname: '/techniques',
+			query: {
+				position,
+				dominance,
+				technique_type
+			}
+		})
 	}
 
 	@autobind
@@ -103,7 +124,7 @@ const mapStateToProps = state => {
 	return {
 		position: state.position,
 		dominance: state.dominance,
-		technique_type: state.techniqueType,
+		technique_type: state.technique_type,
 		stage: state.stage
 	};
 };
