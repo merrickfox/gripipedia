@@ -31,7 +31,7 @@ class VideoGrid extends React.Component {
 		} = this.props.data;
 
 		return (
-			<div>
+			<div className="video-grid">
 				{loading &&
 					<div>Loading...</div>
 				}
@@ -43,6 +43,23 @@ class VideoGrid extends React.Component {
 				))
 				}
 
+				{ /*language=SCSS*/ }
+				<style jsx>{`
+
+          @media (max-width: 400px) {
+            .video-grid {
+              flex-direction: column;
+            }
+          }
+
+          .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+          }
+
+				`}</style>
 			</div>
 		)
 	}
