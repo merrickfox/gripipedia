@@ -36,12 +36,21 @@ class VideoGrid extends React.Component {
 					<div>Loading...</div>
 				}
 
+				{
+					!loading &&
+					getTechniques &&
+					!getTechniques.length &&
+					<div>Looks like we don't have any videos for that!</div>
+				}
+
+
 				{getTechniques &&
 				this.state.youtube_data &&
 				this.state.youtube_data.map(item => (
 					<SingleVideo key={item.id} {...item} />
 				))
 				}
+
 
 				{ /*language=SCSS*/ }
 				<style jsx>{`
@@ -79,7 +88,7 @@ const Techniques = gql`
   }
 `;
 
-
+/*TODO fix url params*/
 export default graphql(Techniques, {
-	options: ({ url: { query }, ...rest }) => ({ variables: { position: query.position || rest.position, dominance: query.dominance || rest.dominance, technique_type: query.technique_type || rest.technique_type } })
+	options: ({ url: { query }, ...reduxState }) => ({ variables: { position: reduxState.position, dominance: reduxState.dominance, technique_type: reduxState.technique_type } })
 })(VideoGrid);
